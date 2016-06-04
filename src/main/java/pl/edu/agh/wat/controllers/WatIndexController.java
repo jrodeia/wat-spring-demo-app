@@ -12,4 +12,12 @@ public class WatIndexController {
     String watIndex(){
         return "index";
     }
+
+    @RequestMapping("/info")
+    String infoIndex(){
+        return "info";
+    }
+
+
 }
+

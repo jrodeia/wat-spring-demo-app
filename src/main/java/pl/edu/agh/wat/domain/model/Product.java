@@ -4,6 +4,10 @@ package pl.edu.agh.wat.domain.model;
  * Our product implementation, product for a ecommerce website
  */
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
@@ -15,9 +19,13 @@ public class Product {
     @Version
     private Integer version;
 
+    @Size(min=5, max= 100, message = "{error.product.type.size}" )
     private String productId;
+    @Size(min=5, max= 100, message = "{error.product.type.size}")
     private String description;
+    @Size(min=5, max= 100, message = "{error.product.type.size}")
     private String imageUrl;
+    @Digits(integer = 5, fraction = 2, message = "{error.product.type.size}" )
     private BigDecimal price;
 
     public String getDescription() {
