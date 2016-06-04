@@ -17,13 +17,6 @@ apply plugin: 'spring-boot'
 jar {
 	baseName = 'wat-spring-demo-app'
 	version = '0.0.1-SNAPSHOT'
-	manifest {
-		attributes(
-				'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-				'Main-Class': 'pl.edu.agh.wat.WatSpringDemoAppApplication'
-		)
-	}
-
 }
 
 sourceCompatibility = 1.8
