@@ -12,12 +12,20 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'spring-boot' 
+apply plugin: 'spring-boot'
 
 jar {
 	baseName = 'wat-spring-demo-app'
 	version = '0.0.1-SNAPSHOT'
+	manifest {
+		attributes(
+				'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+				'Main-Class': 'pl.edu.agh.wat.WatSpringDemoAppApplication'
+		)
+	}
+
 }
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -25,8 +33,13 @@ repositories {
 	mavenCentral()
 }
 
+task stage {
+	dependsOn build
+}
 
-
+bootRepackage {
+	mainClass = 'pl.edu.agh.wat.WatSpringDemoAppApplication'
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
