@@ -26,7 +26,7 @@ import java.net.URISyntaxException;
 @EnableJpaRepositories(basePackages = {"pl.edu.agh.wat.domain.repository"})
 @EnableTransactionManagement
 
-class HerokuDatabaseConfig {
+class RepositoryConfiguration {
 
     @Value("${spring.datasource.uri}")
     private String databaseUri;

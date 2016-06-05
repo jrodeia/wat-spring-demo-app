@@ -22,6 +22,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {RepositoryConfiguration.class})
+
 public class ProductRepositoryTest {
 
     private ProductRepository productRepository;

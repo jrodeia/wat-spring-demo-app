@@ -22,7 +22,7 @@ import java.net.URISyntaxException;
 
 @Configuration
 
-class HerokuDatabaseConfig {
+class DatabaseConfig {
 
     @Value("${spring.datasource.uri}")
     private String databaseUri;
