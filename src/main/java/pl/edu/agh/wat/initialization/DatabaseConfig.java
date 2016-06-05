@@ -22,7 +22,7 @@ import java.net.URISyntaxException;
 
 @Configuration
 
-class DatabaseConfig {
+public class DatabaseConfig {
 
     @Value("${spring.datasource.uri}")
     private String databaseUri;
