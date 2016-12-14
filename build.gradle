@@ -4,21 +4,24 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
+		maven { url "https://repo.spring.io/plugins-snapshot" }
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+	classpath "io.spring.gradle:dependency-management-plugin:0.6.0.BUILD-SNAPSHOT"
+	classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'spring-boot'
+apply plugin: 'spring-boot' 
 
 jar {
 	baseName = 'wat-spring-demo-app'
 	version = '0.0.1-SNAPSHOT'
 }
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -26,15 +29,11 @@ repositories {
 	mavenCentral()
 }
 
-task stage {
-	dependsOn build
-}
 
-bootRepackage {
-	mainClass = 'pl.edu.agh.wat.WatSpringDemoAppApplication'
-}
+
 
 dependencies {
+	
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
@@ -43,7 +42,7 @@ dependencies {
 	compile("org.webjars:jquery:2.1.4")
 	compile("org.webjars:bootstrap:3.3.4")
 
-//	runtime('com.h2database:h2')
+	runtime('com.h2database:h2')
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 }
